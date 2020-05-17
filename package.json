@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.6",
+    "axios": "^0.19.2",
     "expo": "~37.0.3",
     "expo-splash-screen": "^0.2.3",
     "expo-updates": "~0.2.0",
@@ -21,7 +22,10 @@
     "react-native-screens": "~2.2.0",
     "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7",
-    "react-timer-mixin": "^0.13.4"
+    "react-redux": "^7.2.0",
+    "react-timer-mixin": "^0.13.4",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

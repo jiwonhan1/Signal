@@ -1,19 +1,25 @@
-import * as React from 'react';
+import React , { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import Main from './src/components/Main'
+import reducer from './src/reducers/reducer';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
+import middlewareLogger from './src/middleware/middleware-logger';
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+const store = createStore(reducer, (applyMiddleware(middlewareLogger, thunk)));
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
-    </View>
-  );
+console.log(store.getState());
+
+export default class App extends Component {
+ 
+  render() {
+    return (
+      <Provider store = {store}>
+        <Main/>
+      </Provider>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
