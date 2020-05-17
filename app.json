@@ -1,0 +1,17 @@
+{
+  "name": "signal2",
+  "displayName": "signal2",
+  "expo": {
+    "name": "signal2",
+    "slug": "signal2",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
