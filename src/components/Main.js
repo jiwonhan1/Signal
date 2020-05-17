@@ -15,7 +15,7 @@ class Main extends Component {
     if(!loading) {
       return (
       <View>
-          {areas.length ? people.map((area, i) => <Text key={i}>{area.name}</Text>) : <Text>No People</Text>}
+          {areas.length ? areas.map((area, i) => <Text key={i}>{area.name}</Text>) : <Text>No area</Text>}
       </View>
       );
   } else {

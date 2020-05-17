@@ -18,7 +18,7 @@ function reducer (state = initialState, action){
       return {
         ...state, 
         loading: false,
-        areas: action.payload
+        areas: action.payload.data
       }
     case actions.FETCH_DATA_FAILURE:
       return {
