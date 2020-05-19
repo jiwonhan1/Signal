@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { fetchAreas } from "../actions/fetchData";
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import Map from './Map';
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchAreas();
   }
+  componentWillUnmount() {
+    StatusBar.setHidden(true, 'none');
+  }
 
   render()
   {
     console.log(this.props);
-    const { error, loading, areas} = this.props;
+    const { loading } = this.props;
     if(!loading) {
       return (
-        <View styles={styles.mapContainer}>
-        <MapView provider={PROVIDER_GOOGLE}
-     style={styles.map}
-     region={{
-       latitude: 41.89193,
-       longitude: 12.51133,
-       latitudeDelta: 0.015,
-       longitudeDelta: 0.0121}}/>
-  </View>
+        <Map />
       );
   } else {
       return (
-      <View>
-          <Text>Loading...........</Text>
+      <View style={styles.initialLoading}>
+        <StatusBar hidden = {true} />  
+        <Image source = {{uri:'https://img.icons8.com/ultraviolet/40/000000/high-connection.png'}}
+   style = {{ width: 120, height: 120 }}
+   />
+          <Text style={styles.initialText}>Signal</Text>
       </View>
       )
   }
@@ -37,19 +36,26 @@ class Main extends Component {
 }
 
 const styles = StyleSheet.create({
-  mapContainer : {
+  initialLoading : {
      width : '100%',
-     height : 200
+     height : 200,
+     flex: 0.8,
+     justifyContent: "center",
+     alignItems: "center"
    },
-  map : {
-     width : '100%',
-     height : '100%'
+   initialText : {
+     fontSize: 40,
+     fontWeight: "bold",
+     justifyContent: "center",
+     alignItems: "center"
    }
  });
+
 const mapStateToProps = state => ({
   areas: state.areas,
   loading: state.loading,
-  error: state.error
+  error: state.error,
+  geolocation: state.geolocation
 });
 
 const mapDispatchToProps = { fetchAreas };

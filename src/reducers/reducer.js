@@ -3,7 +3,11 @@ import * as actions from '../actions/actions';
 const initialState = {
   loading: false,
   error: null,
-  areas: []
+  areas: [],
+  geolocation: {
+    lat: 47.608166,
+    lng: -122.204566, 
+  }
 }
 
 function reducer (state = initialState, action){
@@ -18,13 +22,23 @@ function reducer (state = initialState, action){
       return {
         ...state, 
         loading: false,
-        areas: action.payload.data
+        areas: action.payload.data,
       }
     case actions.FETCH_DATA_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
+      }
+    case actions.FETCH_LOCATION:
+      return {
+        ...state,
+        geolocation: geolocation,
+      }
+    case actions.MOVE_TO_LOCATION:
+      return {
+        ...state,
+        geolocation: geolocation,
       }
     default:
       return state;
