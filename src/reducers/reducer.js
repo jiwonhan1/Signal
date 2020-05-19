@@ -4,10 +4,7 @@ const initialState = {
   loading: false,
   error: null,
   areas: [],
-  geolocation: {
-    lat: 47.608166,
-    lng: -122.204566, 
-  }
+  geolocation: {}
 }
 
 function reducer (state = initialState, action){
@@ -30,15 +27,10 @@ function reducer (state = initialState, action){
         loading: false,
         error: action.payload.error,
       }
-    case actions.FETCH_LOCATION:
+    case actions.CURRENT_LOCATION:
       return {
         ...state,
-        geolocation: geolocation,
-      }
-    case actions.MOVE_TO_LOCATION:
-      return {
-        ...state,
-        geolocation: geolocation,
+        geolocation: action.position.coords,
       }
     default:
       return state;

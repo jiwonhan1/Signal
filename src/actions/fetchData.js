@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actions from './actions';
+import Geolocation from '@react-native-community/geolocation';
 
 export function fetchAreas() {
   return dispatch => {
@@ -12,3 +13,10 @@ export function fetchAreas() {
   }
 }
 
+export function currentLocation() {
+return dispatch => {
+  Geolocation.getCurrentPosition(position => {
+    {dispatch(actions.fetchLocation(position))}
+    ;
+  })
+}}

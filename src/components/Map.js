@@ -1,40 +1,74 @@
-import React, { Component, useState} from 'react';
+import React, { Component, useState, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { moveToLocation } from '../actions/actions';
+import { currentLocation } from '../actions/fetchData';
 
-const Map = () => {
-
+class Map extends Component {
+  componentDidMount() {
+    this.props.currentLocation();
+    
+  }
   // componentWillMount(nextProps) {
   //   const currentProps = this.props;
 
   //   if(!currentProps.geolocation && nextProps.geolocation)
 
   // }
-  const [region, setRegion] = useState({
-    latitude: 47.608166,
-    longitude: -122.204566,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01
-  });
 
 
+  // let currentLocation = this.locateCurrentPosition();
 
+  // const [region, setRegion] = useState({
+  //   latitude: currentLocation.coords.latitude,
+  //   longitude: currentLocation.coords.longitude,
+  //   latitudeDelta: 0.01,
+  //   longitudeDelta: 0.01
+  // });
 
-      console.log(region)
+//   locateCurrentPosition = () => {
+//   Geolocation.getCurrentPosition(position => {
+//     console.log(JSON.stringify(position))
+//   }
+//   )
+// }
+      render(){
+        const { geolocation } = this.props;
+        console.log('hi');
+      console.log(geolocation);
+        // console.log(this.locateCurrentPosition());
       return (
         <View styles={styles.mapContainer}>
         <MapView provider={PROVIDER_GOOGLE}
         style={styles.map}
         showsUserLocation={true}
-        
-        region={region}
-        onRegionChangeComplete={region => setRegion(region)}/>
+        region={{
+          latitude: geolocation.latitude,
+          longitude: geolocation.longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        // showsMyLocationButton={true}
+        onRegionChangeComplete={this.props.onRegionChange}
+        // onRegionChange={region => {
+        //   setLocation({
+        //     latitude: region.latitude,
+        //     longitude: region.longitude,
+        //   });
+        // }}
+        // onRegionChangeComplete={region => {
+        //   setLocation({
+        //     latitude: region.latitude,
+        //     longitude: region.longitude,
+        //   });
+        // }}
+        />
         </View>
       );  
-  
+      }
 }
+
+
 
 const styles = StyleSheet.create({
   mapContainer : {
@@ -47,11 +81,21 @@ const styles = StyleSheet.create({
    }
  });
 
+//  Map.propTypes = {
+//   region.lat: PropTypes.object,
+//   onSurveyResponseSubmit: PropTypes.func,
+//   onViewResponsesClick: PropTypes.func,
+//   onDeleteSurveyClick: PropTypes.func,
+//   onEditSurveyClick: PropTypes.func,
+// };
+
 const mapStateToProps = state => ({
   geolocation: state.geolocation
 });
 
-const mapDispatchToProps = dispatch => ({
-  onRegionChange: (geolocation) => dispatch(moveToLocation(geolocation))
-})
+// const mapDispatchToProps = dispatch => ({
+//   onRegionChange: (geolocation) => dispatch(currentLocation(geolocation))
+// })
+
+const mapDispatchToProps = { currentLocation };
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

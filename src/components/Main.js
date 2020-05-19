@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { fetchAreas } from "../actions/fetchData";
 import Map from './Map';
-import Geolocation from '@react-native-community/geolocation';
+
  
 class Main extends Component {
   componentDidMount() {
@@ -14,19 +14,12 @@ class Main extends Component {
     StatusBar.setHidden(true, 'none');
   }
 
-  locateCurrentPosition = () => {
-    Geolocation.getCurrentPosition(position => {
-      console.log(JSON.stringify(position))
-    }
-    )
-}
-  
+
  
   render()
   {
     console.log(this.props);
-    console.log('hi');
-    this.locateCurrentPosition();
+    //this.locateCurrentPosition();
     const { loading } = this.props;
     if(!loading) {
       return (
