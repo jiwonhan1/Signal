@@ -18,18 +18,19 @@ const Map = () => {
     latitudeDelta: 0.01,
     longitudeDelta: 0.01
   });
-    console.log(region)
 
+
+
+
+      console.log(region)
       return (
         <View styles={styles.mapContainer}>
         <MapView provider={PROVIDER_GOOGLE}
         style={styles.map}
         showsUserLocation={true}
-        followsUserLocation={true}
-        region={region}
-        onRegionChangeComplete={region => setRegion(region)}/
         
-        >
+        region={region}
+        onRegionChangeComplete={region => setRegion(region)}/>
         </View>
       );  
   
