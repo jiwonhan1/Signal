@@ -18,5 +18,9 @@ return dispatch => {
   Geolocation.getCurrentPosition(position => {
     {dispatch(actions.fetchLocation(position))}
     ;
-  })
+  }),
+  (error) => {
+    alert("Geolocation error: "+error.message);
+},
+{enableHighAccuracy: true, timeout: 20000, maximumAge: 0}
 }}

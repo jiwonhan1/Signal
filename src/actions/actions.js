@@ -24,8 +24,8 @@ export const fetchLocation = (position) => ({
   position
 })
 
-export const changeLocation = (latitude, longitude) => ({
+export const changeLocation = (lat, lon) => ({
   type: CHANGE_LOCATION,
-  latitude,
-  longitude
+  lat,
+  lon,
 })

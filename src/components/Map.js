@@ -1,31 +1,13 @@
-
 import React, { Component, useState, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { currentLocation } from '../actions/fetchData';
-import { changeLocation } from '../actions/actions';
-
+import {changeLocation} from '../actions/actions';
 class Map extends Component {
   componentDidMount() {
     this.props.currentLocation();
     
-  }
-
-  onMapLocation = (region) => {
-    
-    console.log('----onMapLoction----')
-    let latitude = region.latitude
-    let longitude = region.longitude
-    this.props.changeLocation(latitude, longitude);
-    console.log(latitude);
-    console.log(longitude);
-  }
-  onRegionChange = () => {
-    const {latitude, longitude } = this.props;
-    console.log("onPress")
-    console.log(latitude)
-    console.log(longitude)
   }
   // componentWillMount(nextProps) {
   //   const currentProps = this.props;
@@ -34,6 +16,22 @@ class Map extends Component {
 
   // }
 
+  onMapLocation = (region) => {
+    
+    console.log('----onMapLoction----')
+    let lat = region.latitude
+    let lon = region.longitude
+    this.props.changeLocation(lat, lon);
+    console.log(lat);
+    console.log(lon);
+  }
+
+    onRegionChange = () => {
+    const {lat, lon } = this.props;
+    console.log('hi');
+    console.log(lat);
+    console.log(lon);
+  }
 
   // let currentLocation = this.locateCurrentPosition();
 
@@ -51,30 +49,25 @@ class Map extends Component {
 //   )
 // }
       render(){
-        const { geolocation, latitude } = this.props;
-        console.log('----this.props.geolocation----')
-        console.log('hishaidiashidjsi')
-        console.log(geolocation);
-        console.log(latitude);
+        const { lat, lon } = this.props;
+        console.log('hi');
+      //console.log(geolocation);
+        // console.log(this.locateCurrentPosition());
       return (
         <View styles={styles.mapContainer}>
         <MapView provider={PROVIDER_GOOGLE}
         style={styles.map}
-        showsUserLocation={true}
-        // initialRegion={{
-        //   latitude: geolocation.latitude,
-        //   longitude: geolocation.longitude,
-        //   latitudeDelta: 0.0922,
-        //   longitudeDelta: 0.0421,
-        // }}
         region={{
-          latitude: geolocation.latitude,
-          longitude: geolocation.longitude,
+          latitude: lat,
+          longitude: lon,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        // showsMyLocationButton={true}
         onRegionChangeComplete={region => this.onMapLocation(region)}
-        onLongPress={this.onRegionChange}
+        onLongPress={this.onRegionChange()}
+        showsUserLocation={true}
+                showsMyLocationButton={true}
         // onRegionChange={region => {
         //   setLocation({
         //     latitude: region.latitude,
@@ -115,9 +108,9 @@ const styles = StyleSheet.create({
 // };
 
 const mapStateToProps = state => ({
-  geolocation: state.geolocation,
-  latitude: state.latitude,
-  longitude: state.longitude
+  // geolocation: state.geolocation,
+  lat: state.lat,
+  lon: state.lon,
 });
 
 // const mapDispatchToProps = dispatch => ({
