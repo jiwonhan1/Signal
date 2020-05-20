@@ -3,6 +3,7 @@ export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const FETCH_LOCATION = 'FETCH_LOCATION';
 export const CURRENT_LOCATION = 'CURRENT_LOCATION';
+export const CHANGE_LOCATION = 'CHANGE_LOCATION';
 
 export const fetchDataBegin = () => ({
   type: FETCH_DATA_BIGIN
@@ -21,4 +22,10 @@ export const fetchDataFailure = (error) => ({
 export const fetchLocation = (position) => ({
   type: CURRENT_LOCATION,
   position
+})
+
+export const changeLocation = (latitude, longitude) => ({
+  type: CHANGE_LOCATION,
+  latitude,
+  longitude
 })
