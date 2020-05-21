@@ -20,7 +20,7 @@ return dispatch => {
     ;
   }),
   (error) => {
-    alert("Geolocation error: "+error.message);
+    alert("Geolocation error: "+ error.message);
 },
 {enableHighAccuracy: true, timeout: 20000, maximumAge: 0}
 }}

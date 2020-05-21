@@ -1,86 +1,73 @@
 import React, { Component, useState, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { View, Text, StyleSheet, StatusBar, Dimensions, Image } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
+import { getAddress } from '../actions/latlngReserse';
+import { mapRetroStyle } from '../style/mapStyle';
+
 class Map extends Component {
   componentDidMount() {
     this.props.currentLocation();
     
   }
-  // componentWillMount(nextProps) {
-  //   const currentProps = this.props;
-
-  //   if(!currentProps.geolocation && nextProps.geolocation)
-
-  // }
-
   onMapLocation = (region) => {
     
     console.log('----onMapLoction----')
     let lat = region.latitude
     let lon = region.longitude
-    this.props.changeLocation(lat, lon);
+    let latDelta = region.latDelta
+    let lonDelta = region.lonDelta
+    this.props.changeLocation(lat, lon, latDelta, lonDelta);
     console.log(lat);
     console.log(lon);
   }
 
     onRegionChange = () => {
     const {lat, lon } = this.props;
-    console.log('hi');
     console.log(lat);
     console.log(lon);
   }
-
-  // let currentLocation = this.locateCurrentPosition();
-
-  // const [region, setRegion] = useState({
-  //   latitude: currentLocation.coords.latitude,
-  //   longitude: currentLocation.coords.longitude,
-  //   latitudeDelta: 0.01,
-  //   longitudeDelta: 0.01
-  // });
-
-//   locateCurrentPosition = () => {
-//   Geolocation.getCurrentPosition(position => {
-//     console.log(JSON.stringify(position))
-//   }
-//   )
-// }
       render(){
-        const { lat, lon } = this.props;
+        const { areas, lat, lon, latDelta, lonDelta } = this.props;
         console.log('hi');
-      //console.log(geolocation);
-        // console.log(this.locateCurrentPosition());
+        this.props.getAddress(lat, lon)
       return (
         <View styles={styles.mapContainer}>
         <MapView provider={PROVIDER_GOOGLE}
+        customMapStyle={mapRetroStyle}
         style={styles.map}
         region={{
           latitude: lat,
           longitude: lon,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: latDelta,
+          longitudeDelta: lonDelta,
         }}
-        // showsMyLocationButton={true}
         onRegionChangeComplete={region => this.onMapLocation(region)}
         onLongPress={this.onRegionChange()}
         showsUserLocation={true}
-                showsMyLocationButton={true}
-        // onRegionChange={region => {
-        //   setLocation({
-        //     latitude: region.latitude,
-        //     longitude: region.longitude,
-        //   });
-        // }}
-        // onRegionChangeComplete={region => {
-        //   setLocation({
-        //     latitude: region.latitude,
-        //     longitude: region.longitude,
-        //   });
-        // }}
-        />
+        showsMyLocationButton={true}
+        zoomEnabled={true}
+        zoomControlEnabled={true}
+        >
+          {areas.map((area, i) => 
+            <Marker 
+            key={i}
+            coordinate={{
+              latitude: area.geolocation.lat,
+              longitude: area.geolocation.lng,
+            }}
+            title={area.name}
+            description={area.description}>
+            <Image
+                    source={require('../../assets/signal.png')}
+                    style={{ height: 35, width: 35 }}
+                    resizeMode="contain"
+            />
+            </Marker>  
+            )}
+        </MapView>
         </View>
       );  
       }
@@ -99,23 +86,14 @@ const styles = StyleSheet.create({
    }
  });
 
-//  Map.propTypes = {
-//   region.lat: PropTypes.object,
-//   onSurveyResponseSubmit: PropTypes.func,
-//   onViewResponsesClick: PropTypes.func,
-//   onDeleteSurveyClick: PropTypes.func,
-//   onEditSurveyClick: PropTypes.func,
-// };
-
 const mapStateToProps = state => ({
-  // geolocation: state.geolocation,
+  areas: state.areas,
   lat: state.lat,
   lon: state.lon,
+  latDelta: state.latDelta,
+  lonDelta: state.lonDelta
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   onRegionChange: (geolocation) => dispatch(currentLocation(geolocation))
-// })
+const mapDispatchToProps = { currentLocation, changeLocation, getAddress };
 
-const mapDispatchToProps = { currentLocation, changeLocation };
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

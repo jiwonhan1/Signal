@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { fetchAreas } from "../actions/fetchData";
 import Map from './Map';
-
  
 class Main extends Component {
   componentDidMount() {
@@ -14,13 +13,11 @@ class Main extends Component {
     StatusBar.setHidden(true, 'none');
   }
 
-
- 
   render()
   {
-    console.log(this.props);
-    //this.locateCurrentPosition();
+    
     const { loading } = this.props;
+
     if(!loading) {
       return (
         <Map />
@@ -57,10 +54,8 @@ const styles = StyleSheet.create({
  });
 
 const mapStateToProps = state => ({
-  areas: state.areas,
   loading: state.loading,
   error: state.error,
-  geolocation: state.geolocation
 });
 
 const mapDispatchToProps = { fetchAreas };
