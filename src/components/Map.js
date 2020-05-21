@@ -1,11 +1,13 @@
 import React, { Component, useState, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, StatusBar, Dimensions, Image } from 'react-native';
+import { View, Text, StyleSheet, Alert , Dimensions, Image } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
 import { getAddress } from '../actions/latlngReserse';
 import { mapRetroStyle } from '../style/mapStyle';
+import Form from './Form';
+
 
 class Map extends Component {
   componentDidMount() {
@@ -25,13 +27,22 @@ class Map extends Component {
   }
 
     onRegionChange = () => {
-    const {lat, lon } = this.props;
-    console.log(lat);
-    console.log(lon);
+    const {lat, lon, address} = this.props;
+    Alert.alert(
+      'Would you like to report this area as a bad reception area?',
+      address,
+    
+      [
+        {text: 'OK', onPress: () => this.props.navigation.navigate('Form', {lat, lon})},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      ],
+      {cancelable: false},
+    );
   }
       render(){
         const { areas, lat, lon, latDelta, lonDelta } = this.props;
         console.log('hi');
+        console.log('asd');
         this.props.getAddress(lat, lon)
       return (
         <View styles={styles.mapContainer}>
@@ -45,7 +56,7 @@ class Map extends Component {
           longitudeDelta: lonDelta,
         }}
         onRegionChangeComplete={region => this.onMapLocation(region)}
-        onLongPress={this.onRegionChange()}
+        onLongPress={this.onRegionChange}
         showsUserLocation={true}
         showsMyLocationButton={true}
         zoomEnabled={true}
@@ -88,6 +99,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   areas: state.areas,
+  address: state.address,
   lat: state.lat,
   lon: state.lon,
   latDelta: state.latDelta,

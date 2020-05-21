@@ -22,5 +22,29 @@ return dispatch => {
   (error) => {
     alert("Geolocation error: "+ error.message);
 },
-{enableHighAccuracy: true, timeout: 20000, maximumAge: 0}
+{enableHighAccuracy: false, timeout: 30000, maximumAge: 0}
 }}
+
+// export function postArea(area) {
+//   return dispatch => {
+//     axios.post('https://phm16m4tck.execute-api.us-west-2.amazonaws.com/Prod/api/signalspots/',
+//     JSON.stringify(area))
+//     .then(console.log(area))
+//     .then(() => {dispatch(actions.createArea(area))})
+//     .catch(error => alert(error.message))
+//   }
+// }
+
+// axios({
+//   method: 'PUT',
+//   'https://phm16m4tck.execute-api.us-west-2.amazonaws.com/Prod/api/signalspots/', 
+//   data: JSON.stringify(area), 
+//   headers:{'Content-Type': 'application/json; charset=utf-8'}
+// })    
+// .then((response) => {            
+//   res.sendStatus(200);
+// })
+// .catch((error) => {
+//   logger.error(error);
+//   res.status(500).send(error);
+// });

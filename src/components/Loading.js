@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { fetchAreas } from "../actions/fetchData";
-import Map from './Map';
+import Main from './Main';
 import Form from './Form';
-import {createAppContainer} from 'react-navigation';
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+
 
 class LoadingPage extends Component {
   componentDidMount() {
@@ -15,15 +14,31 @@ class LoadingPage extends Component {
   componentWillUnmount() {
     StatusBar.setHidden(true, 'none');
   }
+
   render()
   {
     
+    const { loading } = this.props;
+
+    if(!loading) {
       return (
-        <Map />
+        <Main />
       );
- 
+  } else {
+      return (
+      <View style={styles.initialLoading}>
+        <StatusBar hidden = {true} />  
+        <Image source = {{uri:'https://img.icons8.com/ultraviolet/40/000000/high-connection.png'}}
+   style = {{ width: 120, height: 120 }}
+   />
+          <Text style={styles.initialText}>Signal</Text>
+      </View>
+      )
+  }
 }
+  
 }
+
 const styles = StyleSheet.create({
   initialLoading : {
      width : '100%',
@@ -46,21 +61,13 @@ const styles = StyleSheet.create({
  });
 
 
-const TapNavigator = createMaterialBottomTabNavigator(
-  {
-    Map: {
-    screen: Map,
-   },
-   Form: {
-     screen: Form,
-   }
- },
- {
-   initialRouteName: 'Map',
-   activeColor: '#ffffff',
-   inactiveColor: '#bda1f7',
-   barStyle: { backgroundColor: '#6948f4' },
- }
-);
 
-export default createAppContainer(TapNavigator)
+const mapStateToProps = state => ({
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = { fetchAreas };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
