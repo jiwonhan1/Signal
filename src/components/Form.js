@@ -5,31 +5,45 @@ import {Platform, StyleSheet, Text, TextInput, View,
 import { postArea } from "../actions/fetchData";
 import { connect } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
+import Map from './Map';
 
 import { v4 as uuidv4 } from 'uuid';
 
 class Form extends Component {
 
-  state = {name: '', geolocation: { lat : this.props.navigation.state.params.lat, lng : this.props.navigation.state.params.lon }, signalStrength: '', description: '', carrier: ''}
+  state = {name: '', geolocation: { lat : this.props.navigation.state.params ? this.props.navigation.state.params.lat : Alert.alert('Select location', 'Press the area where you would like to report as a signal area',
+  [
+    {text: 'OK', onPress: () => this.props.navigation.navigate('Map')},
+    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+  ],
+  {cancelable: false}) , lng : this.props.navigation.state.params ? this.props.navigation.state.params.lon : '' }, signalStrength: '', description: '', carrier: ''}
+
+  reset = () => {
+    return  {name: '', geolocation: { lat : '', lng :  '' }, signalStrength: '', description: '', carrier: ''}
+  }
 
   handleSubmit = (area) => {
     console.log('checking')
     console.log(area)
     this.props.postArea(area)
+    // this.setState(this.reset())
     this.props.navigation.navigate('Map')
+
   }
 
 
   render() {
-    console.log('form')
-    console.log(this.props)
-    console.log(this.state) 
+   
+    console.log(this.state.geolocation.lat)
+    console.log('what')
+    console.log(this.state.geolocation.lng)
     return (
       <View styles={styles.container}>
         <View styles={styles.inputContainer}>
+          <Text>Name</Text>
           <TextInput 
           style={styles.inputs}
-          placeholder="Name"
+          placeholder="Your name"
           onChangeText={((name) => this.setState({name}))}/>
         </View>
         <View styles={styles.inputContainer}>
@@ -45,6 +59,7 @@ class Form extends Component {
           />
         </View>
         <View styles={styles.inputContainer}>
+          <Text>Describe your signal experience</Text>
           <TextInput 
           style={styles.inputs}
           placeholder="Description"
@@ -68,7 +83,7 @@ class Form extends Component {
       </View>
 
     )
-  }
+          }
 }
 
 const styles = StyleSheet.create({

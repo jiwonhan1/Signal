@@ -1,4 +1,4 @@
-import React, { Component, useState, PropTypes} from 'react';
+import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, Alert , Dimensions, Image } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -30,7 +30,6 @@ class Map extends Component {
     Alert.alert(
       'Would you like to report this area as a bad reception area?',
       address,
-    
       [
         {text: 'OK', onPress: () => this.props.navigation.navigate('Form', {lat, lon})},
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
