@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import {Platform, StyleSheet, Text, TextInput, View,
-        Dimensions,TouchableOpacity,Button,Alert,Image,
-        ImageBackground,StatusBar} from 'react-native';
+        TouchableOpacity,Button,Alert,Image,
+        ImageBackground } from 'react-native';
 import { postArea } from "../actions/fetchData";
 import { connect } from 'react-redux';
+import RNPickerSelect from 'react-native-picker-select';
+
+import { v4 as uuidv4 } from 'uuid';
+
 class Form extends Component {
 
-  state = { id: '', name: '', geolocation: { lat : this.props.navigation.state.params.lat, lng : this.props.navigation.state.params.lon }, signalStrength: '', description: '', carrier: ''}
+  state = {name: '', geolocation: { lat : this.props.navigation.state.params.lat, lng : this.props.navigation.state.params.lon }, signalStrength: '', description: '', carrier: ''}
 
   handleSubmit = (area) => {
     console.log('checking')
     console.log(area)
     this.props.postArea(area)
+    this.props.navigation.navigate('Map')
   }
 
 
@@ -28,10 +33,16 @@ class Form extends Component {
           onChangeText={((name) => this.setState({name}))}/>
         </View>
         <View styles={styles.inputContainer}>
-          <TextInput 
-          style={styles.inputs}
-          placeholder="Signal Strength ex>None or Weak"
-          onChangeText={((signalStrength) => this.setState({signalStrength}))}/>
+          <Text>Signal Strength</Text>
+          <RNPickerSelect 
+            onValueChange={(value)=> this.setState({signalStrength : value})}
+            items={[
+              {label: 'None', value: 'None'},
+              {label: 'Weak', value: 'Weak'},
+              {label: 'Okay', value: 'Okay'},
+              {label: 'Good', value: 'Good'}
+            ]}
+          />
         </View>
         <View styles={styles.inputContainer}>
           <TextInput 
@@ -40,11 +51,17 @@ class Form extends Component {
           onChangeText={((description) => this.setState({description}))}/>
         </View>
         <View styles={styles.inputContainer}>
-          <TextInput 
-          style={styles.inputs}
-          placeholder="Carrier"
-          onChangeText={((carrier) => this.setState({carrier}))}/>
+          <Text>Mobile Carrier</Text>
+          <RNPickerSelect 
+            onValueChange={(value)=> this.setState({carrier : value})}
+            items={[
+              {label: 'AT&T', value: 'AT&T'},
+              {label: 'Tmobile', value: 'Tmobile'},
+              {label: 'Verizon', value: 'Verizon'},
+            ]}
+          />
         </View>
+
         <TouchableOpacity style={styles.submitButtonText} onPress={() => this.handleSubmit(this.state)}>
           <Text style={styles.submitText}>Report</Text>
         </TouchableOpacity>

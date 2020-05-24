@@ -69,5 +69,5 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { fetchAreas };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingPage);
 

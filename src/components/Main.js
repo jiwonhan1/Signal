@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
-import { fetchAreas } from "../actions/fetchData";
+
 import Map from './Map';
 import Form from './Form';
 import {createAppContainer} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 
 class LoadingPage extends Component {
-  componentDidMount() {
-    this.props.fetchAreas();
-    
-  }
-  componentWillUnmount() {
-    StatusBar.setHidden(true, 'none');
-  }
   render()
   {
     

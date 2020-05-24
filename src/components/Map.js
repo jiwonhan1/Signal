@@ -12,15 +12,14 @@ import Form from './Form';
 class Map extends Component {
   componentDidMount() {
     this.props.currentLocation();
-    
   }
   onMapLocation = (region) => {
     
     console.log('----onMapLoction----')
     let lat = region.latitude
     let lon = region.longitude
-    let latDelta = region.latDelta
-    let lonDelta = region.lonDelta
+    let latDelta = region.latitudeDelta
+    let lonDelta = region.longitudeDelta
     this.props.changeLocation(lat, lon, latDelta, lonDelta);
     console.log(lat);
     console.log(lon);
@@ -42,7 +41,7 @@ class Map extends Component {
       render(){
         const { areas, lat, lon, latDelta, lonDelta } = this.props;
         console.log('hi');
-        console.log('asd');
+        console.log(areas);
         this.props.getAddress(lat, lon)
       return (
         <View styles={styles.mapContainer}>
