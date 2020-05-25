@@ -16,7 +16,7 @@
 
 Signal is an Android mobile application that shares locations where they have non-reception or bad-recaiption.
 <br/>
-Signal will provide the platform that people share the bad/non reception area information. A user is able to report the reception information on the Signal app. Based on information, Users could prepare before having a unexpectable reception issue. User also could find the secret service spots in non-reception area.
+Signal will provide the platform that people share the bad/non reception area information. A user is able to report the reception information on the Signal app. Based on information, users could prepare before having a unexpectable reception issue. User also could find the secret service spots in non-reception area.
 
 ## 2. User Persona & flow
 
