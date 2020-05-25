@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {Platform, StyleSheet, Text, TextInput, View,
-        TouchableOpacity,Button,Alert,Image,
-        ImageBackground } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
 import { postArea } from "../actions/fetchData";
 import { connect } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
@@ -34,15 +32,15 @@ class Form extends Component {
     console.log('what')
     console.log(this.state.geolocation.lng)
     return (
-      <View styles={styles.container}>
-        <View styles={styles.inputContainer}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
           <Text>Name</Text>
           <TextInput 
           style={styles.inputs}
           placeholder="Your name"
           onChangeText={((name) => this.setState({name}))}/>
         </View>
-        <View styles={styles.inputContainer}>
+        <View style={styles.inputContainer}>
           <Text>Signal Strength</Text>
           <RNPickerSelect 
             onValueChange={(value)=> this.setState({signalStrength : value})}
@@ -54,14 +52,14 @@ class Form extends Component {
             ]}
           />
         </View>
-        <View styles={styles.inputContainer}>
+        <View style={styles.inputContainer}>
           <Text>Describe your signal experience</Text>
           <TextInput 
           style={styles.inputs}
           placeholder="Description"
           onChangeText={((description) => this.setState({description}))}/>
         </View>
-        <View styles={styles.inputContainer}>
+        <View style={styles.inputContainer}>
           <Text>Mobile Carrier</Text>
           <RNPickerSelect 
             onValueChange={(value)=> this.setState({carrier : value})}
@@ -72,40 +70,31 @@ class Form extends Component {
             ]}
           />
         </View>
-
         <TouchableOpacity style={styles.submitButtonText} onPress={() => this.handleSubmit(this.state)}>
           <Text style={styles.submitText}>Report</Text>
         </TouchableOpacity>
       </View>
-
     )
-          }
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // backgroundColor: "#CE0B24",
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    justifyContent: 'center'
   },
   inputContainer: {
-    borderBottomColor: '#05C203',
-    backgroundColor: '#FFFFFF',
-    borderRadius:5,
-    borderBottomWidth: 1,
-    width:350,
-    height:45,
-    marginBottom:20,
-    flexDirection: 'row',
-    alignItems:'center'
+    width:250,
+    height:100,
   },
   inputs:{
     width: 250,
     height: 44,
     padding: 10,
     marginBottom: 10,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: '#ecf0f1',
   },
   submitButtonText:{
     color: '#FFFFFF',
@@ -118,7 +107,6 @@ const styles = StyleSheet.create({
   },
   submitText:{
     color: '#FFFFFF',
-    alignItems: 'center'
  },
 })
 

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, Alert , Dimensions, Image } from 'react-native';
-import { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import MapView from "react-native-map-clustering";
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+// import MapView from "react-native-map-clustering";
 import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
 import { getAddress } from '../actions/latlngReserse';
