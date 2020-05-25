@@ -6,7 +6,6 @@ import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
 import { getAddress } from '../actions/latlngReserse';
 import { mapRetroStyle } from '../style/mapStyle';
-import Form from '../components/Form';
 
 
 class Map extends Component {

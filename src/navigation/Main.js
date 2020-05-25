@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from '../screens/Map';
-import Form from './Form';
+import Form from '../screens/Form';
 import {createAppContainer} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Entypo from 'react-native-vector-icons/Entypo';

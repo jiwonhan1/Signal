@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-import Main from './src/components/Main'
 import Loading from './src/components/Loading'
 import reducer from './src/reducers/reducer';
 import { Provider } from 'react-redux';

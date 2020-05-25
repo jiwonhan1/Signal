@@ -5,9 +5,6 @@ import {Platform, StyleSheet, Text, TextInput, View,
 import { postArea } from "../actions/fetchData";
 import { connect } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
-import Map from '../screens/Map';
-
-import { v4 as uuidv4 } from 'uuid';
 
 class Form extends Component {
 

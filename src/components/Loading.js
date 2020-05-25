@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { fetchAreas } from "../actions/fetchData";
-import Main from './Main';
-import Form from './Form';
-
+import Main from '../navigation/Main';
 
 class LoadingPage extends Component {
   componentDidMount() {
