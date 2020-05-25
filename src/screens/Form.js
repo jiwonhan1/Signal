@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
-import { postArea } from "../actions/fetchData";
+import { postArea,fetchAreas } from "../actions/fetchData";
 import { connect } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -10,7 +10,7 @@ class Form extends Component {
   [
     {text: 'OK', onPress: () => this.props.navigation.navigate('Map')},
   ],
-  {cancelable: false}) , lng : this.props.navigation.state.params ? this.props.navigation.state.params.lon : '' }, signalStrength: '', description: '', carrier: ''}
+  {cancelable: false}) , lng : this.props.navigation.state.params ? this.props.navigation.state.params.lon : 0 }, signalStrength: '', description: '', carrier: ''}
 
   reset = () => {
     return  {name: '', geolocation: { lat : '', lng :  '' }, signalStrength: '', description: '', carrier: ''}
@@ -21,6 +21,7 @@ class Form extends Component {
     console.log(area)
     this.props.postArea(area)
     // this.setState(this.reset())
+    // this.props.fetchAreas();
     this.props.navigation.navigate('Map')
 
   }

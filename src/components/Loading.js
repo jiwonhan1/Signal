@@ -7,10 +7,10 @@ import Main from '../navigation/Main';
 class LoadingPage extends Component {
   componentDidMount() {
     this.props.fetchAreas();
-    
+    StatusBar.setHidden(true, 'none');
   }
   componentWillUnmount() {
-    StatusBar.setHidden(true);
+    
   }
 
   render()
@@ -26,7 +26,7 @@ class LoadingPage extends Component {
       return (
       <View style={styles.initialLoading}>
         <StatusBar hidden = {true} />  
-        <Image source={require('../../assets/signal.png')}
+        <Image source={require('../../assets/mainSignal.png')}
           style = {{ width: 120, height: 120 }}/>
         <Text style={styles.initialText}>Signal</Text>
       </View>
