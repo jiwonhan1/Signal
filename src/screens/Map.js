@@ -72,7 +72,7 @@ class Map extends Component {
             title={area.name}
             description={area.description}>
             <Image
-                    source={require('../../assets/signal.png')}
+                    source={require('../assets/signal.png')}
                     style={{ height: 35, width: 35 }}
                     resizeMode="contain"
             />

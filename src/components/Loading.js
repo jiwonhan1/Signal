@@ -26,7 +26,7 @@ class LoadingPage extends Component {
       return (
       <View style={styles.initialLoading}>
         <StatusBar hidden = {true} />  
-        <Image source={require('../../assets/mainSignal.png')}
+        <Image source={require('../assets/mainSignal.png')}
           style = {{ width: 120, height: 120 }}/>
         <Text style={styles.initialText}>Signal</Text>
       </View>
