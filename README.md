@@ -22,7 +22,7 @@ Signal will provide the platform that people share the bad/non reception area in
 
 ### User Persona
 
-<img src="src/img/userPersona.png" width="700px" />
+<img src="src/img/userPersona.png" width="700px" height= "300"/>
 
 ### User Flow
 <img src="src/img/sc5.png" width="700px" />
