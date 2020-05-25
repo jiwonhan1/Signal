@@ -84,7 +84,7 @@ The user selects `While using the app` or `Only this time`.
 
 **_Backend API is uploaded at https://github.com/jiwon-seattle/Signal-Api.git_** 
 
-To run dev mode locally, be sure that `Android emulator` is installed and running. Please insert your Google Geolocation API at API_KEY section in latlngReserse.js[src/actions/latlngReserse.js]. 
+To run dev mode locally, be sure that `Android emulator` is installed and running. Please insert your Google Geolocation API at API_KEY section in src/actions/latlngReserse.js. 
 
 ```bash
   $ git clone https://github.com/jiwon-seattle/Signal.git 
