@@ -117,7 +117,7 @@ To run dev mode locally, be sure that `Android emulator` is installed and runnin
 
 ### Database
 
-<img src="src/img/Database.png" width="700px" />
+<img src="src/img/database.png" width="700px" />
 
 <img src="src/img/databaseExample.png" width="700px" />
 
