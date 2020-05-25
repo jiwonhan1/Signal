@@ -28,10 +28,9 @@ class LoadingPage extends Component {
       return (
       <View style={styles.initialLoading}>
         <StatusBar hidden = {true} />  
-        <Image source = {{uri:'https://img.icons8.com/ultraviolet/40/000000/high-connection.png'}}
-   style = {{ width: 120, height: 120 }}
-   />
-          <Text style={styles.initialText}>Signal</Text>
+        <Image source={require('../../assets/signal.png')}
+          style = {{ width: 120, height: 120 }}/>
+        <Text style={styles.initialText}>Signal</Text>
       </View>
       )
   }
