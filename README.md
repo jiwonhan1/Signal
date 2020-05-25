@@ -22,10 +22,10 @@ Signal will provide the platform that people share the bad/non reception area in
 
 ### User Persona
 
-<img src="src/img/userPersona.png" width="700px" height= "300"/>
+<img src="src/img/userPersona.png" width="700px"/>
 
 ### User Flow
-<img src="src/img/sc5.png" width="700px" />
+<img src="src/img/sc5.png" width="700px" height= "300"/>
 1. A user could see the icon of Signal when entering an app.
 <img src="src/img/2.png" width="700px" />
 2. The User is given a location permission option that requring to choose out of `While using the app`, `Only this time` or `Deny`.
