@@ -36,7 +36,7 @@ The user selects `While using the app` or `Only this time`.
 7. The user press and hold the location and reporting confirmation alert pops up.
 8. The address of the chosen area is provided.
 9. The user clicks `Ok` and navigates to a Form page.
-10. The user is able to fill out the form: name, description, signal strength(none, weak, okay, good) and carrier(AT&T, Tmobile, Verizon). Location information(latitude and longitude) is automatically delivered to the server.
+10. The user is able to fill out the form: name, description, signal strength(none, weak, okay, good) and carrier(AT&T, Tmobile, Verizon) and hit the `Report` button. Location information(latitude and longitude) is automatically delivered to the server. 
 11. User is able to see a new signal icon that was added by the user.
 
 ### ScreenShots
@@ -89,8 +89,8 @@ To run dev mode locally, be sure that `Android emulator` is installed and runnin
 ```bash
   $ git clone https://github.com/jiwon-seattle/Signal.git 
   $ cd SignalReactNative
-  # After successful pkg installtion
   $ npm install
+  # After successful pkg installtion
   $ react-native run-android
 ```
 > **If you receive an error about `Error:Execution failed for task ':app:processDebugResources'`, please run following : `cd android && ./gradlew clean`.
