@@ -5,8 +5,8 @@
 #### By Jiwon Han
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-![LastCommit](https://img.shields.io/github/last-commit/jiwon-seattle/RomanNumeral)
-![Languages](https://img.shields.io/github/languages/top/jiwon-seattle/RomanNumeral)
+![LastCommit](https://img.shields.io/github/last-commit/jiwon-seattle/Signal)
+![Languages](https://img.shields.io/github/languages/top/jiwon-seattle/Signal)
 [![MIT license](https://img.shields.io/badge/License-MIT-orange.svg)](https://lbesson.mit-license.org/)
 <a href="http://www.linkedin.com/in/jiwon1han">
   <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=plastic&logo=linkedin&colorB=2867B2">
@@ -14,35 +14,38 @@
 
 ## 1. Description
 
-Signal is an Android mobile application that shares locations where they have non-reception or bad-recaiption.
+Signal is an Android mobile application that shares locations where they have non-reception or bad-reception.
 <br/>
-Signal will provide the platform that people share the bad/non reception area information. A user is able to report the reception information on the Signal app. Based on information, Users could prepare before having a unexpectable reception issue. User also could find the secret service spots in non-reception area.
+Signal will provide the platform that people share the bad/non-reception area information. A user is able to report the reception information on the Signal app. Based on information, users could prepare before having an unexpected reception issue. Users also could find the secret service spots in the non-reception area.
 
 ## 2. User Persona & flow
 
 ### User Persona
 
-<img src="src/img/userPersona.png" width="700px" />
+<img src="src/img/userPersona.png" width="700px"/>
 
 ### User Flow
-<img src="src/img/sc5.png" width="700px" />
+
 1. A user could see the icon of Signal when entering an app.
-<img src="src/img/2.png" width="700px" />
-2. The User is given a location permission option that requring to choose out of `While using the app`, `Only this time` or `Deny`.
+2. The User is given a location permission option that requiring to choose out of `While using the app`, `Only this time` or `Deny`.
 The user selects `While using the app` or `Only this time`.
-<img src="src/img/screen1.png" width="700px" />
-<img src="src/img/sc2.png" width="700px" />
-3. Map is loaded based on the current user's location. 
-4. The User could see `bad reception` icon where other users have reported the area as a bad or non reception area.
+3. The map is loaded based on the current user's location. 
+4. The User could see `bad reception` icon where other users have reported the area as a bad or non-reception area.
 5. There are footer navigation that routes to the Map(main) and the Report.
 6. When the user press a Report at the footer navigation, 
-<img src="src/img/sc3.png" width="700px" />
-7. When the user press a certain location, reporting confirmation alert pops up.
-8. Address of the chosen area is provided.
+7. When the user presses a certain location, reporting confirmation alert pops up.
+8. The address of the chosen area is provided.
 9. The user clicks `Ok` and navigates to a Form page.
-<img src="src/img/sc4.png" width="700px" />
-10. The user is able to fill out the form : name, description, signal strength and carrier. Location information is automatically delivered to the server.
-11. User is able to see new signal icon that was added by the user.
+10. The user is able to fill out the form: name, description, signal strength and carrier. Location information is automatically delivered to the server.
+11. User is able to see a new signal icon that was added by the user.
+
+### ScreenShots
+
+<img src="src/img/sc5.png" width="350px" height= "350px"/> <img src="src/img/2.png" width="350px" height= "350px" />
+<img src="src/img/screen1.png" width="350px" height= "350px" />
+<img src="src/img/sc2.png" width="350px" height= "350px" />
+<img src="src/img/sc3.png" width="350px" height= "350px" />
+<img src="src/img/sc4.png" width="350px" height= "350px" />
 
 ## 3. Development
 
@@ -65,8 +68,9 @@ The user selects `While using the app` or `Only this time`.
 |   |-- screens
 |   |-- -- Form.js
 |   |-- -- Map.js
+|   |-- style
+|   |-- -- mapStyle.js
 ```
-**_Backend API is uploaded at https://github.com/jiwon-seattle/Signal-Api.git_** 
 
 ### Tech stack:
 + [NPM](https://www.npmjs.com/) for package management
@@ -78,16 +82,18 @@ The user selects `While using the app` or `Only this time`.
 + [Google Map API](https://developers.google.com/maps/documentation/android-sdk/intro?_gac=1.227754479.1590393377.CjwKCAjw2a32BRBXEiwAUcugiLwc9bGdd9v948Vbj1mOWXbgksZUWcL3cPaQ_V1Pev3uVtXQGYHulxoCZtcQAvD_BwE&_ga=2.6196275.1602237402.1590393361-222622481.1589216034)
 + [Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro) 
 
+**_Backend API is uploaded at https://github.com/jiwon-seattle/Signal-Api.git_** 
+
 To run dev mode locally, be sure that `Android emulator` is installed and running. 
 
 ```bash
-  $ git clone 
+  $ git clone https://github.com/jiwon-seattle/Signal.git 
   $ cd SignalReactNative
   # After successful pkg installtion
   $ npm install
   $ react-native run-android
 ```
-> **If you receive an error about `Error:Execution failed for task ':app:processDebugRecourses'`, please run following : `cd android && ./gradlew clean`.
+> **If you receive an error about `Error:Execution failed for task ':app:processDebugResources'`, please run following : `cd android && ./gradlew clean`.
 
 ### API Documentation
 
@@ -119,14 +125,14 @@ To run dev mode locally, be sure that `Android emulator` is installed and runnin
 
 * Sign-In and sign-out 
 * User authentication (database, Facebook, Google)
-* Notification as when a user get close to the non-reception area
+* Notification as when a user gets close to the non-reception area
 * Dynamic navigation and setting page
 * Location or carrier search function 
-* Query data per distance from users ()
+* Query data per distance from users
 
 ## 3. Known Bugs
 
-1. After report is submitted, no reset for previous information
+1. After the report is submitted, no reset for previous information
 
 ## 4. Support and contact details
 
