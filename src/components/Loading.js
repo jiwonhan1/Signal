@@ -10,7 +10,7 @@ class LoadingPage extends Component {
     
   }
   componentWillUnmount() {
-    StatusBar.setHidden(true, 'none');
+    StatusBar.setHidden(true);
   }
 
   render()

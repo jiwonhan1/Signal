@@ -11,7 +11,6 @@ class Form extends Component {
   state = {name: '', geolocation: { lat : this.props.navigation.state.params ? this.props.navigation.state.params.lat : Alert.alert('Select location', 'Press the area where you would like to report as a signal area',
   [
     {text: 'OK', onPress: () => this.props.navigation.navigate('Map')},
-    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
   ],
   {cancelable: false}) , lng : this.props.navigation.state.params ? this.props.navigation.state.params.lon : '' }, signalStrength: '', description: '', carrier: ''}
 

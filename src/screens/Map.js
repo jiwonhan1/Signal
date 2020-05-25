@@ -1,7 +1,8 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet, Alert , Dimensions, Image } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView from "react-native-map-clustering";
 import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
 import { getAddress } from '../actions/latlngReserse';
@@ -45,6 +46,7 @@ class Map extends Component {
         <View styles={styles.mapContainer}>
         <MapView provider={PROVIDER_GOOGLE}
         customMapStyle={mapRetroStyle}
+        clusterColor='#2346de'
         style={styles.map}
         region={{
           latitude: lat,
@@ -58,6 +60,7 @@ class Map extends Component {
         showsMyLocationButton={true}
         zoomEnabled={true}
         zoomControlEnabled={true}
+        minZoom={3}
         >
           {areas.map((area, i) => 
             <Marker 
