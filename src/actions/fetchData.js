@@ -18,5 +18,39 @@ return dispatch => {
   Geolocation.getCurrentPosition(position => {
     {dispatch(actions.fetchLocation(position))}
     ;
-  })
+  }),
+  (error) => {
+    alert("Geolocation error: "+ error.message);
+},
+{enableHighAccuracy: false, timeout: 30000, maximumAge: 0}
 }}
+
+export function postArea(area) {
+  return dispatch => {
+    axios.post('https://phm16m4tck.execute-api.us-west-2.amazonaws.com/Prod/api/signalspots/',
+    JSON.stringify(area),
+    { 
+      headers: {
+        'Content-Type': 'application/json',
+    }
+    }
+    )
+    .then(console.log(JSON.stringify(area)))
+    .then(() => {dispatch(actions.createArea(area))})
+    .catch((error) => alert( error.response.request._response ) );
+  }
+}
+
+// axios({
+//   method: 'PUT',
+//   'https://phm16m4tck.execute-api.us-west-2.amazonaws.com/Prod/api/signalspots/', 
+//   data: JSON.stringify(area), 
+//   headers:{'Content-Type': 'application/json; charset=utf-8'}
+// })    
+// .then((response) => {            
+//   res.sendStatus(200);
+// })
+// .catch((error) => {
+//   logger.error(error);
+//   res.status(500).send(error);
+// });
