@@ -5,8 +5,8 @@
 #### By Jiwon Han
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-![LastCommit](https://img.shields.io/github/last-commit/jiwon-seattle/RomanNumeral)
-![Languages](https://img.shields.io/github/languages/top/jiwon-seattle/RomanNumeral)
+![LastCommit](https://img.shields.io/github/last-commit/jiwon-seattle/Signal)
+![Languages](https://img.shields.io/github/languages/top/jiwon-seattle/Signal)
 [![MIT license](https://img.shields.io/badge/License-MIT-orange.svg)](https://lbesson.mit-license.org/)
 <a href="http://www.linkedin.com/in/jiwon1han">
   <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=plastic&logo=linkedin&colorB=2867B2">
