@@ -41,8 +41,7 @@ The user selects `While using the app` or `Only this time`.
 
 ### ScreenShots
 
-<img src="src/img/sc5.png" width="350px" height= "350px"/> 
-<img src="src/img/2.png" width="350px" height= "350px" />
+<img src="src/img/sc5.png" width="350px" height= "350px"/> <img src="src/img/2.png" width="350px" height= "350px" />
 <img src="src/img/screen1.png" width="350px" height= "350px" />
 <img src="src/img/sc2.png" width="350px" height= "350px" />
 <img src="src/img/sc3.png" width="350px" height= "350px" />
