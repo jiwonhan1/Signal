@@ -84,7 +84,7 @@ The user selects `While using the app` or `Only this time`.
 To run dev mode locally, be sure that `Android emulator` is installed and running. 
 
 ```bash
-  $ git clone 
+  $ git clone https://github.com/jiwon-seattle/Signal.git 
   $ cd SignalReactNative
   # After successful pkg installtion
   $ npm install
