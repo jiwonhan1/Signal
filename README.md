@@ -47,6 +47,14 @@ The user selects `While using the app` or `Only this time`.
 <img src="src/img/sc3.png" width="350px" height= "350px" />
 <img src="src/img/sc4.png" width="350px" height= "350px" />
 
+### ScreenShots
+
+<img src="src/img/sc5.png" width="350px" height= "350px"/> <img src="src/img/2.png" width="350px" height= "350px" />
+<img src="src/img/screen1.png" width="350px" height= "350px" />
+<img src="src/img/sc2.png" width="350px" height= "350px" />
+<img src="src/img/sc3.png" width="350px" height= "350px" />
+<img src="src/img/sc4.png" width="350px" height= "350px" />
+
 ## 3. Development
 
 ### What's included in react-native 
