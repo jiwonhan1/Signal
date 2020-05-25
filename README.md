@@ -32,11 +32,11 @@ The user selects `While using the app` or `Only this time`.
 3. The map is loaded based on the current user's location. 
 4. The User could see `bad reception` icon where other users have reported the area as a bad or non-reception area.
 5. There are footer navigation that routes to the Map(main) and the Report.
-6. When the user press a Report at the footer navigation, 
-7. When the user presses a certain location, reporting confirmation alert pops up.
+6. When the user press a Report at the footer navigation, `select area` alert pops up.
+7. The user press and hold the location and reporting confirmation alert pops up.
 8. The address of the chosen area is provided.
 9. The user clicks `Ok` and navigates to a Form page.
-10. The user is able to fill out the form: name, description, signal strength and carrier. Location information is automatically delivered to the server.
+10. The user is able to fill out the form: name, description, signal strength(none, weak, okay, good) and carrier(AT&T, Tmobile, Verizon). Location information(latitude and longitude) is automatically delivered to the server.
 11. User is able to see a new signal icon that was added by the user.
 
 ### ScreenShots
