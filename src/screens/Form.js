@@ -17,21 +17,13 @@ class Form extends Component {
   }
 
   handleSubmit = (area) => {
-    console.log('checking')
-    console.log(area)
     this.props.postArea(area)
-    // this.setState(this.reset())
-    // this.props.fetchAreas();
     this.props.navigation.navigate('Map')
 
   }
 
 
   render() {
-   
-    console.log(this.state.geolocation.lat)
-    console.log('what')
-    console.log(this.state.geolocation.lng)
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -82,7 +74,6 @@ class Form extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#CE0B24",
     alignItems: 'center',
     justifyContent: 'center'
   },

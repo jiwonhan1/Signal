@@ -56,7 +56,7 @@ The user selects `While using the app` or `Only this time`.
 |   |-- actions
 |   |-- -- actions.js
 |   |-- -- fetchData.js
-|   |-- -- latlngReserse.js
+|   |-- -- latlngReverse.js
 |   |-- components
 |   |-- -- Loading.js
 |   |-- middleware
@@ -85,7 +85,7 @@ The user selects `While using the app` or `Only this time`.
 
 **_Backend API is uploaded at https://github.com/jiwon-seattle/Signal-Api.git_** 
 
-To run dev mode locally, be sure that [Android emulator]() is installed and running. 
+To run dev mode locally, be sure that [Android emulator](https://developer.android.com/studio/?gclid=CjwKCAjw_LL2BRAkEiwAv2Y3SeP3jkpDFv2SAdI1G-blCGkdPoKT1w2f2Z3mLBpoxN2wE8BXu-0S3xoC1fIQAvD_BwE&gclsrc=aw.ds) is installed and running. Please insert your Google Geolocation API at API_KEY section in src/actions/latlngReverse.js. 
 
 ```bash
   $ git clone https://github.com/jiwon-seattle/Signal.git 
