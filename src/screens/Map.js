@@ -1,11 +1,10 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, Alert , Dimensions, Image } from 'react-native';
+import { View, StyleSheet, Alert, Image } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-// import MapView from "react-native-map-clustering";
 import { currentLocation } from '../actions/fetchData';
 import {changeLocation} from '../actions/actions';
-import { getAddress } from '../actions/latlngReserse';
+import { getAddress } from '../actions/latlngReverse';
 import { mapRetroStyle } from '../style/mapStyle';
 
 
@@ -14,21 +13,17 @@ class Map extends Component {
     this.props.currentLocation();
   }
   onMapLocation = (region) => {
-    
-    console.log('----onMapLoction----')
     let lat = region.latitude
     let lon = region.longitude
     let latDelta = region.latitudeDelta
     let lonDelta = region.longitudeDelta
     this.props.changeLocation(lat, lon, latDelta, lonDelta);
-    console.log(lat);
-    console.log(lon);
   }
 
     onRegionChange = () => {
     const {lat, lon, address} = this.props;
     Alert.alert(
-      'Would you like to report this area as a bad reception area?',
+      'Would you like to report this area for a reception area?',
       address,
       [
         {text: 'OK', onPress: () => this.props.navigation.navigate('Form', {lat, lon})},
@@ -39,8 +34,6 @@ class Map extends Component {
   }
       render(){
         const { areas, lat, lon, latDelta, lonDelta } = this.props;
-        console.log('hi');
-        console.log(areas);
         this.props.getAddress(lat, lon)
       return (
         <View styles={styles.mapContainer}>
