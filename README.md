@@ -74,6 +74,7 @@ The user selects `While using the app` or `Only this time`.
 
 ### Tech stack:
 + [NPM](https://www.npmjs.com/) for package management
++ [Java SE Development Kit](https://www.oracle.com/technetwork/java/javase/11-0-7-oracle-relnotes-5972662.html) for android development
 + [React Native](https://reactnative.dev/) as core stack
 + [Redux](https://redux.js.org/) for state management 
 + [ASP .NET](https://dotnet.microsoft.com/apps/aspnet) for backend API
@@ -84,7 +85,7 @@ The user selects `While using the app` or `Only this time`.
 
 **_Backend API is uploaded at https://github.com/jiwon-seattle/Signal-Api.git_** 
 
-To run dev mode locally, be sure that `Android emulator` is installed and running. 
+To run dev mode locally, be sure that [Android emulator]() is installed and running. 
 
 ```bash
   $ git clone https://github.com/jiwon-seattle/Signal.git 
